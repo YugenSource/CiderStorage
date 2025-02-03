@@ -7,6 +7,8 @@ pub mod constants;
 
 pub mod cider;
 pub mod prelude;
+
+pub mod chain;
 //pub mod ring_layer;
 
 
