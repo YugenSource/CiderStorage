@@ -1,5 +1,6 @@
 use crate::constants::BYTES_IN_A_CHUNK;
 use crate::constants::{MINIBLOB_SIZE,MINIBLOB_TRIPLE_SIZE};
+use std::collections::HashMap;
 
 use base58::{FromBase58,ToBase58};
 
@@ -7,6 +8,14 @@ use base58::{FromBase58,ToBase58};
 pub mod blobs;
 
 pub mod app;
+
+pub mod block;
+
+pub mod pubkey;
+
+pub mod pow;
+
+pub mod ciderblock;
 
 pub struct UniversalStorageChain {
     pub chains: Vec<Block>,
@@ -40,19 +49,6 @@ impl BlobStorage {
     pub fn blob_to_bs58(&self) -> String {
         self.blob.to_base58()
     }
-}
-
-pub struct Block {
-    prev_hash: String,
-    pieces: Vec<DataPieceID>,
-    
-    blobs: Vec<BlobStorage>,
-    miniblobs: Vec<MiniBlob>,
-    miniblobs: Vec<
-    
-    
-    /// PoW
-    nonce: u64,
 }
 
 impl Block {
