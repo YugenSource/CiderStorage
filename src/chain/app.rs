@@ -5,6 +5,7 @@ use super::block::Block;
 
 pub struct UniversalStorageChain {
     pubkey_address: String,
+    csprng_256: String,
 
     // Chains 0-F (16)
     blocks_0: Vec<Block>,
@@ -26,8 +27,9 @@ pub struct UniversalStorageChain {
     
     // Nodes
     pieces: HashMap<DataPieceID,DataPieceID>,
-    pieces_id: HashMap<DataPieceID,(u8,u64)>
+    pieces_id: HashMap<DataPieceID,(u8,u64)>,
 
     // Mempool
-    mempool:
+    mempool_pieces: Vec<DataPieceID>,
+    mempool_blobs: Vec<
 }

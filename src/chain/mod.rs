@@ -15,6 +15,8 @@ pub mod pubkey;
 
 pub mod pow;
 
+pub mod consensus;
+
 pub mod ciderblock;
 
 pub struct UniversalStorageChain {
