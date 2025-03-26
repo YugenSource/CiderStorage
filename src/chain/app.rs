@@ -2,12 +2,13 @@ use super::DataPieceID;
 use std::collections::HashMap;
 
 use super::block::Block;
+use super::blobs::Blob;
 
 pub struct UniversalStorageChain {
     pubkey_address: String,
     csprng_256: String,
 
-    // Chains 00-FF (16)
+    // Chains 00-FF (255)
     blocks_00: Vec<Block>,
     blocks_01: Vec<Block>,
     blocks_02: Vec<Block>,
@@ -271,5 +272,6 @@ pub struct UniversalStorageChain {
 
     // Mempool
     mempool_pieces: Vec<DataPieceID>,
-    mempool_blobs: Vec<
+    mempool_blobs: Vec<Blob>,
+    mempool_blobs_id: HashMap<DataPieceID,DataPieceID>,
 }

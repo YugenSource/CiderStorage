@@ -27,7 +27,7 @@ use dirs::*;
 use crate::constants::BLAKE2B_DIGEST_SIZE_IN_BYTES;
 use crate::constants::BYTES_IN_A_CHUNK;
 
-use base32::{encode,decode};
+use base32::{encode,decode,Alphabet};
 
 use blake3::Hash;
 
@@ -310,7 +310,7 @@ impl CiderData {
 
             // Get blake3 hash
             let b3_sum = blake3::hash(&bytes);
-            let cid_no_case = base32::encode(base32::Alphabet::RFC4648 { padding: false},b3_sum.as_bytes());
+            let cid_no_case = base32::encode(base32::Alphabet::Rfc4648 { padding: false},b3_sum.as_bytes());
             let cid = cid_no_case.to_ascii_uppercase();
 
             if cid == self.cid {
@@ -441,7 +441,7 @@ impl CiderData {
         let context = ParanoidHash::new(BLAKE2B_DIGEST_SIZE_IN_BYTES,OsAlgorithm::SHA512);
         let hash_hex = context.read_bytes(&data.as_ref());
         let hash_bytes = ParanoidHash::as_bytes(&hash_hex.0);
-        let cid = base32::encode(base32::Alphabet::RFC4648 { padding: false},&hash_bytes);
+        let cid = base32::encode(base32::Alphabet::Rfc4648 { padding: false},&hash_bytes);
         
         let cid_uppercase = cid.to_ascii_uppercase();
 
@@ -449,7 +449,7 @@ impl CiderData {
     }
     fn to_cid_b3<T: AsRef<[u8]>>(data: T) -> String {
         let b3_sum = blake3::hash(data.as_ref());
-        let cid = base32::encode(base32::Alphabet::RFC4648{ padding: false},b3_sum.as_bytes());
+        let cid = base32::encode(base32::Alphabet::Rfc4648{ padding: false},b3_sum.as_bytes());
         let cid_uppercase = cid.to_ascii_uppercase();
 
         return cid_uppercase
@@ -469,7 +469,7 @@ impl CiderData {
         let context = ParanoidHash::new(BLAKE2B_DIGEST_SIZE_FILENAME,OsAlgorithm::SHA512);
         let hash_hex = context.read_bytes(data.as_ref());
         let hash_bytes = ParanoidHash::as_bytes(&hash_hex.0);
-        let filename = base32::encode(base32::Alphabet::RFC4648 { padding: false},&hash_bytes);
+        let filename = base32::encode(base32::Alphabet::Rfc4648 { padding: false},&hash_bytes);
 
         let filename_uppercase = filename.to_ascii_uppercase();
 

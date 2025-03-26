@@ -3,6 +3,24 @@ use crate::constants::{MINIBLOB_SIZE,MINIBLOB_TRIPLE_SIZE};
 use crate::chain::DataPieceID;
 
 /// # Blob
+/// Storage of 256kb known as a blob.
+pub struct Blob {
+    hash: DataPieceID,
+    storage: [u8;BYTES_IN_A_CHUNK],
+    nonce: u64,
+}
+
+
+
+
+
+
+
+
+
+/*
+
+/// # Blob
 /// 
 /// A Single Blob Storage Including BLAKE3 of Blob. Blobstrorage of 256kb.
 pub struct Blob {
@@ -12,6 +30,16 @@ pub struct Blob {
     blob: [u8;BYTES_IN_A_CHUNK], // Blob of 256kb
     
     nonce: u64, // Nonce of Blob
+}
+
+pub struct BlobBs64 {
+    hash: DataPieceID,
+    bs64_hash: String,
+
+    blob_bs64: String,
+    blob: [u8;BYTES_IN_A_CHUNK],
+
+    nonce: u64,
 }
 
 pub struct BlobStorage {
@@ -70,3 +98,5 @@ pub struct MiniBlob {
     tripleminiblob: [u8;MINIBLOB_TRIPLE_SIZE],
     nonce: u64,
 }
+
+*/

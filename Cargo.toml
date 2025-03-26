@@ -36,3 +36,5 @@ libslug = "0.2.0"
 
 # Consensus
 proof-of-history = "0.1.0"
+
+poh-yugen = "0.1.0"
