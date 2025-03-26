@@ -38,3 +38,7 @@ libslug = "0.2.0"
 proof-of-history = "0.1.0"
 
 poh-yugen = "0.1.0"
+
+sha2 = "0.10.8"
+
+securerand-rs = "0.2.0"
